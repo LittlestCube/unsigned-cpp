@@ -1,8 +1,8 @@
 class UnsignedByte
 {
-	char b;
-	
 	public:
+		char b;
+		
 		UnsignedByte(char param)
 		{
 			set(param);

@@ -1,8 +1,8 @@
 class UnsignedShort
 {
-	short s;
-	
 	public:
+		short s;
+		
 		UnsignedShort(char param)
 		{
 			set(param);
