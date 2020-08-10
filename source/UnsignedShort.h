@@ -22,24 +22,24 @@ UnsignedShort::UnsignedShort()
 
 
 
-int UnsignedShort::unsign(short param)
+inline int UnsignedShort::unsign(short param)
 {
 	return param & 0xFFFF;
 }
 
 
 
-int UnsignedShort::get()
+inline int UnsignedShort::get()
 {
 	return unsign(s);
 }
 
-int UnsignedShort::getBit(int position)
+inline int UnsignedShort::getBit(int position)
 {
 	return ((s & (0x1 << position)) >> position);
 }
 
-int UnsignedShort::subBits(int from, int to)
+inline int UnsignedShort::subBits(int from, int to)
 {
 	int bits = 0;
 	
@@ -51,7 +51,7 @@ int UnsignedShort::subBits(int from, int to)
 	return bits;
 }
 
-void UnsignedShort::setBit(int position, int value)
+inline void UnsignedShort::setBit(int position, int value)
 {
 	value %= 2;
 	
@@ -66,7 +66,7 @@ void UnsignedShort::setBit(int position, int value)
 	}
 }
 
-void UnsignedShort::setBits(int from, int to, int *values)
+inline void UnsignedShort::setBits(int from, int to, int *values)
 {
 	for (int i = 0; i <= to - from; i++)
 	{
@@ -76,7 +76,7 @@ void UnsignedShort::setBits(int from, int to, int *values)
 
 
 
-void UnsignedShort::setBits(int from, int to, int directValue)
+inline void UnsignedShort::setBits(int from, int to, int directValue)
 {
 	for (int i = from; i <= to; i++)
 	{
@@ -86,7 +86,7 @@ void UnsignedShort::setBits(int from, int to, int directValue)
 
 
 
-void UnsignedShort::setByte(int position, int nbyte)
+inline void UnsignedShort::setByte(int position, int nbyte)
 {
 	nbyte = nbyte & 0xFF;
 	
@@ -95,14 +95,14 @@ void UnsignedShort::setByte(int position, int nbyte)
 	s = (short) ((nbyte << actualPosition) | (s & ~(0xFF << actualPosition)));
 }
 
-char UnsignedShort::subByte(int position)
+inline char UnsignedShort::subByte(int position)
 {
 	int actualPosition = position * 8;
 	
 	return (char) ((s & (0xFF << (actualPosition))) >> actualPosition);
 }
 
-void UnsignedShort::craftShort(char byte1, char byte0)
+inline void UnsignedShort::craftShort(char byte1, char byte0)
 {
 	setByte(1, byte1);
 	setByte(0, byte0);
@@ -110,17 +110,17 @@ void UnsignedShort::craftShort(char byte1, char byte0)
 
 
 
-void UnsignedShort::left(int offset)
+inline void UnsignedShort::left(int offset)
 {
 	s <<= offset;
 }
 
-void UnsignedShort::right(int offset)
+inline void UnsignedShort::right(int offset)
 {
 	s >>= offset;
 }
 
-void UnsignedShort::comp()
+inline void UnsignedShort::comp()
 {
 	s = (short) ~s;
 }
@@ -128,32 +128,32 @@ void UnsignedShort::comp()
 
 
 // -------- UnsignedShort parameters --------
-void UnsignedShort::set(UnsignedShort param)
+inline void UnsignedShort::set(UnsignedShort param)
 {
 	s = param.s;
 }
 
-void UnsignedShort::add(UnsignedShort param)
+inline void UnsignedShort::add(UnsignedShort param)
 {
 	s += param.s;
 }
 
-void UnsignedShort::sub(UnsignedShort param)
+inline void UnsignedShort::sub(UnsignedShort param)
 {
 	add(-param.s);
 }
 
-void UnsignedShort::_or(UnsignedShort param)
+inline void UnsignedShort::_or(UnsignedShort param)
 {
 	s |= param.s;
 }
 
-void UnsignedShort::_and(UnsignedShort param)
+inline void UnsignedShort::_and(UnsignedShort param)
 {
 	s &= param.s;
 }
 
-void UnsignedShort::_xor(UnsignedShort param)
+inline void UnsignedShort::_xor(UnsignedShort param)
 {
 	s ^= param.s;
 }
@@ -161,32 +161,32 @@ void UnsignedShort::_xor(UnsignedShort param)
 
 
 // ------- char parameters --------
-void UnsignedShort::set(char param)
+inline void UnsignedShort::set(char param)
 {
 	s = (short) param;
 }
 
-void UnsignedShort::add(char param)
+inline void UnsignedShort::add(char param)
 {
 	s += param;
 }
 
-void UnsignedShort::sub(char param)
+inline void UnsignedShort::sub(char param)
 {
 	add(-param);
 }
 
-void UnsignedShort::_or(char param)
+inline void UnsignedShort::_or(char param)
 {
 	s |= param;
 }
 
-void UnsignedShort::_and(char param)
+inline void UnsignedShort::_and(char param)
 {
 	s &= param;
 }
 
-void UnsignedShort::_xor(char param)
+inline void UnsignedShort::_xor(char param)
 {
 	s ^= param;
 }
@@ -194,32 +194,32 @@ void UnsignedShort::_xor(char param)
 
 
 // ------ short parameters --------
-void UnsignedShort::set(short param)
+inline void UnsignedShort::set(short param)
 {
 	s = param;
 }
 
-void UnsignedShort::add(short param)
+inline void UnsignedShort::add(short param)
 {
 	s += param;
 }
 
-void UnsignedShort::sub(short param)
+inline void UnsignedShort::sub(short param)
 {
 	add(-param);
 }
 
-void UnsignedShort::_or(short param)
+inline void UnsignedShort::_or(short param)
 {
 	s |= param;
 }
 
-void UnsignedShort::_and(short param)
+inline void UnsignedShort::_and(short param)
 {
 	s &= param;
 }
 
-void UnsignedShort::_xor(short param)
+inline void UnsignedShort::_xor(short param)
 {
 	s ^= param;
 }
@@ -227,32 +227,32 @@ void UnsignedShort::_xor(short param)
 
 
 // -------- int parameters --------
-void UnsignedShort::set(int param)
+inline void UnsignedShort::set(int param)
 {
 	s = (short) param;
 }
 
-void UnsignedShort::add(int param)
+inline void UnsignedShort::add(int param)
 {
 	s += param;
 }
 
-void UnsignedShort::sub(int param)
+inline void UnsignedShort::sub(int param)
 {
 	add(-param);
 }
 
-void UnsignedShort::_or(int param)
+inline void UnsignedShort::_or(int param)
 {
 	s |= param;
 }
 
-void UnsignedShort::_and(int param)
+inline void UnsignedShort::_and(int param)
 {
 	s &= param;
 }
 
-void UnsignedShort::_xor(int param)
+inline void UnsignedShort::_xor(int param)
 {
 	s ^= param;
 }
