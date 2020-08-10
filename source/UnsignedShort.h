@@ -1,7 +1,7 @@
 class UnsignedShort
 {
 	public:
-		short s;
+		signed short s;
 		
 		UnsignedShort(char param)
 		{

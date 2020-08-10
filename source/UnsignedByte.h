@@ -1,7 +1,7 @@
 class UnsignedByte
 {
 	public:
-		char b;
+		signed char b;
 		
 		UnsignedByte(char param)
 		{
